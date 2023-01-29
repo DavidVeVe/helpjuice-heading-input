@@ -1,0 +1,38 @@
+body {
+    width: 100vw;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.input-wrapper__input {
+    width: 250px;
+    border: 0;
+    outline: 0;
+}
+
+.dropdown {
+    border: 1px solid gray;
+    border-radius: 5px;
+    position: absolute;
+    left: 0;
+    top: 30px;
+}
+
+.dropdown__item[is-selected = 'true'] {
+    background-color: #F3F3F3;
+}
+
+.display-none {
+    display: none;
+    display: initial;
+}
+
+.display-initial {
+    display: initial;
+}

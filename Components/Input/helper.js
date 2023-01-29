@@ -58,13 +58,13 @@ const setInputStylesConfig = (
 };
 
 //Creates text elements when hitting enter/return
-const createElements = (inputElement, DOMContentHasHeading, value, code, DOMContent) => {
+const createElements = (inputElement, DOMContentHasHeading, value, code, DOMContent, inputWrapper) => {
     if (code === "Enter" && value.length > 0 && inputBuildElementState) {
       if (DOMContentHasHeading) {
-        DOMContent.insertBefore(getHeadingElement(value), inputElement);
+        DOMContent.insertBefore(getHeadingElement(value), inputWrapper);
         resetInputConfig(inputElement);
       } else {
-        DOMContent.insertBefore(getNormalTextElement(value), inputElement);
+        DOMContent.insertBefore(getNormalTextElement(value), inputWrapper);
         resetInputConfig(inputElement);
       }
 

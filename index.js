@@ -1,4 +1,3 @@
-import DropdownComponent from "./Components/Dropdown/DropdownComponent.js";
 import InputComponent from "./Components/Input/InputComponent.js";
 
 const DOMContent = document.querySelector(".content");
