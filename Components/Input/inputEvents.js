@@ -1,9 +1,11 @@
 import { setInputStylesConfig, createElements, clearInput } from "./helper.js";
 
-const toogleDropdown = (action, dropdownElement) => {
-  action === "remove"
-    ? dropdownElement.classList.remove("display-none")
-    : dropdownElement.classList.add("display-none");
+const toogleDropdown = (DOMContent, value, dropdownElement) => {
+  if (value === "/" && DOMContent.children.length === 1) {
+    dropdownElement.classList.remove("display-none");
+  } else {
+    dropdownElement.classList.add("display-none");
+  }
 };
 
 const inputKeyUpEvent = (
@@ -19,11 +21,7 @@ const inputKeyUpEvent = (
   } = event;
   const DOMContentHasHeading = DOMContent.children.length === 1;
 
-  if (value === "/" && DOMContent.children.length === 1 ) {
-    toogleDropdown("remove", dropdownElement);
-  } else {
-    toogleDropdown("add", dropdownElement);
-  }
+  toogleDropdown(DOMContent, value, dropdownElement);
 
   setInputStylesConfig(inputElement, DOMContentHasHeading, value);
   createElements(
