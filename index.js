@@ -9,7 +9,7 @@ const normalTextPlaceholderStylesConfig = [
   { height: "20px", fontSize: "12px", placeHolder: normalTextPlaceholder }
 ];
 
-let inputBuildElementState = false
+let inputBuildElementState = false;
 
 const setInputConfig = (el, value, { height, fontSize, placeHolder }) => {
   el.style.height = height;
@@ -46,7 +46,8 @@ const inputKeyUpEvent = (inputElement, event) => {
 
   //Sets input configurations
   if (RegExp("^/1").test(value)) {
-    inputBuildElementState = true
+    inputBuildElementState = true;
+
     if (DOMContentHasHeading) {
       headingPlaceholderStylesConfig.forEach((itemConfig) => {
         setInputConfig(inputElement, value, itemConfig);
@@ -58,12 +59,6 @@ const inputKeyUpEvent = (inputElement, event) => {
     }
   }
 
-  //Resets input config
-  if (!value && code === "Backspace") {
-    inputBuildElementState = false
-    resetInputConfig(inputElement);
-  }
-
   //Creates text elements when hitting enter/return
   if (code === "Enter" && value.length > 0 && inputBuildElementState) {
     if (DOMContentHasHeading) {
@@ -73,7 +68,15 @@ const inputKeyUpEvent = (inputElement, event) => {
       DOMContent.insertBefore(getNormalTextElement(value), inputElement);
       resetInputConfig(inputElement);
     }
-    inputBuildElementState = false
+    inputBuildElementState = false;
+  }
+};
+
+const inputKeyDownEvent = (inputElement, { code, target: { value } }) => {
+  //Resets input config
+  if (!value && code === "Backspace") {
+    resetInputConfig(inputElement);
+    inputBuildElementState = false;
   }
 };
 
@@ -82,9 +85,13 @@ function inputComponent() {
 
   inputElement.setAttribute("placeholder", inputInitialPlaceholder);
 
-  inputElement.addEventListener("keyup", (e) => {
-    inputKeyUpEvent(inputElement, e);
-  });
+  inputElement.addEventListener("keyup", (e) =>
+    inputKeyUpEvent(inputElement, e)
+  );
+
+  inputElement.addEventListener("keydown", (e) =>
+    inputKeyDownEvent(inputElement, e)
+  );
 
   return inputElement;
 }
