@@ -72,7 +72,7 @@ const inputKeyUpEvent = (inputElement, event) => {
   }
 };
 
-const inputKeyDownEvent = (inputElement, { code, target: { value } }) => {
+const clearInput = (inputElement, { code, target: { value } }) => {
   //Resets input config
   if (!value && code === "Backspace") {
     resetInputConfig(inputElement);
@@ -90,7 +90,7 @@ function inputComponent() {
   );
 
   inputElement.addEventListener("keydown", (e) =>
-    inputKeyDownEvent(inputElement, e)
+    clearInput(inputElement, e)
   );
 
   return inputElement;
