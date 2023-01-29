@@ -62,7 +62,7 @@ const getNormalTextElement = (value) => {
  * @param {string} value
  */
 const setInputStylesConfig = (inputElement, DOMContentHasHeading, value) => {
-  if (RegExp("^/1+[A-Za-z0-9]").test(value)) {
+  if (RegExp("^/1+[ A-Za-z0-9]").test(value)) {
     inputBuildElementState = true;
     if (DOMContentHasHeading) {
       headingPlaceholderStylesConfig.forEach((itemConfig) => {
