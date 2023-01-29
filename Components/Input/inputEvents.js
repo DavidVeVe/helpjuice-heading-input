@@ -1,12 +1,4 @@
-import { setInputStylesConfig, createElements, clearInput } from "./helper.js";
-
-const toogleDropdown = (DOMContent, value, dropdownElement) => {
-  if (value === "/" && DOMContent.children.length === 1) {
-    dropdownElement.classList.remove("display-none");
-  }  else {
-    dropdownElement.classList.add("display-none");
-  }
-};
+import { setInputStylesConfig, createElements, clearInput, toogleDropdown } from "../helper.js";
 
 const setSelectedElement = (data) => {
   if (data.length > 0) data[0].isSelected = true;

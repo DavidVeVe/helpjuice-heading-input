@@ -42,7 +42,7 @@ const setInputStylesConfig = (
   DOMContentHasHeading,
   value,
 ) => {
-    if (RegExp("^/1").test(value)) {
+    if (RegExp("^/1+[A-Za-z0-9]").test(value)) {
         inputBuildElementState = true;
 
     if (DOMContentHasHeading) {
@@ -78,6 +78,14 @@ const createElements = (inputElement, DOMContentHasHeading, value, code, DOMCont
     }
   };
 
+  const toogleDropdown = (DOMContent, value, dropdownElement) => {
+    if (value === "/1") {
+      dropdownElement.classList.remove("display-none");
+    }  else {
+      dropdownElement.classList.add("display-none");
+    }
+  };
+
 export {
   setInputStylesConfig,
   createElements,
@@ -85,5 +93,6 @@ export {
   getHeadingElement,
   resetInputConfig,
   setInputConfig,
-  clearInput
+  clearInput,
+  toogleDropdown
 };
