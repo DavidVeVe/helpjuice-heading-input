@@ -3,7 +3,11 @@ import { clearInput, inputKeyUpEvent } from "./inputEvents.js";
 import { INPUT_INITIAL_PLACEHOLDER } from "../../constants.js";
 import DropdownComponent from "../Dropdown/DropdownComponent.js";
 
-//Input component with events
+/**
+ * @description Input component
+ * @param {node} DOMContent
+ * @returns Input wrapped in a parent element
+ */
 function InputComponent(DOMContent) {
   const inputWrapper = document.createElement("div");
   const inputElement = document.createElement("input");

@@ -1,9 +1,27 @@
-import { setInputStylesConfig, createElements, clearInput, toogleDropdown } from "../helper.js";
+import {
+  setInputStylesConfig,
+  createElements,
+  clearInput,
+  toogleDropdown
+} from "../helper.js";
 
+/**
+ * @description Selects item from dropdown
+ * @param {array} data
+ */
 const setSelectedElement = (data) => {
   if (data.length > 0) data[0].isSelected = true;
 };
 
+/**
+ * @description Keyup event from input
+ * @param {node} inputElement
+ * @param {object} event
+ * @param {node} DOMContent
+ * @param {node} inputWrapper
+ * @param {node} dropdownElement
+ * @param {array} dropdownData
+ */
 const inputKeyUpEvent = (
   inputElement,
   event,
