@@ -19,7 +19,7 @@ const inputKeyUpEvent = (
 
   const DOMContentHasHeading = DOMContent.children.length === 1;
 
-  toogleDropdown(DOMContent, value, dropdownElement);
+  toogleDropdown(value, dropdownElement);
   setSelectedElement(dropdownData);
 
   setInputStylesConfig(inputElement, DOMContentHasHeading, value);

@@ -1,12 +1,8 @@
-const headingPlaceholder = "Heading 1";
-const normalTextPlaceholder = "Normal text";
-const headingPlaceholderStylesConfig = [
-  { height: "30px", fontSize: "30px", placeHolder: headingPlaceholder }
-];
-const normalTextPlaceholderStylesConfig = [
-  { height: "20px", fontSize: "12px", placeHolder: normalTextPlaceholder }
-];
-const inputInitialPlaceholder = "Type / for blocks, @ to link docs or people";
+import {
+  INPUT_INITIAL_PLACEHOLDER,
+  headingPlaceholderStylesConfig,
+  normalTextPlaceholderStylesConfig
+} from '../constants.js'
 
 let inputBuildElementState = false
 
@@ -21,7 +17,7 @@ const resetInputConfig = (el) => {
   el.style.height = "20px";
   el.style.fontSize = "12px";
   el.value = "";
-  el.setAttribute("placeholder", inputInitialPlaceholder);
+  el.setAttribute("placeholder", INPUT_INITIAL_PLACEHOLDER);
 };
 
 const getHeadingElement = (value) => {
@@ -79,7 +75,7 @@ const createElements = (inputElement, DOMContentHasHeading, value, code, DOMCont
     }
   };
 
-  const toogleDropdown = (DOMContent, value, dropdownElement) => {
+  const toogleDropdown = (value, dropdownElement) => {
     if (value === "/1") {
       dropdownElement.classList.remove("display-none");
     }  else {
