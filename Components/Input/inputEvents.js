@@ -10,7 +10,6 @@ const toogleDropdown = (DOMContent, value, dropdownElement) => {
 
 
 const setSelectedElement = (data) => {
-    console.log(data)
     if (data.length > 0) data[0].isSelected = true;
   };
 
