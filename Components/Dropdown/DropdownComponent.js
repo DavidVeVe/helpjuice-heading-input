@@ -1,20 +1,17 @@
-import { dropdownMockedData } from "../../mockData.js";
 const documentBody = document.querySelector("body");
 
-
 function createDropdownElements(data) {
-  return data.map(({ title, shortcutText, isSelected, tag }) => {
+  return data.map(({ title, shortcutText, isSelected }) => {
     return `<div
                       class="dropdown__item"
                        is-selected="${isSelected || false}"
-                      tag="${tag}">
                       <h6>${title}</h6>
                       <p>Shortcut: ${shortcutText}</p>
                   </div>`;
   });
 }
 
-function DropdownComponent(DOMContent) {
+function DropdownComponent(dropdownMockedData) {
   const dropdown = document.createElement("div");
   dropdown.setAttribute("class", "dropdown");
   dropdown.classList.add("display-none");
