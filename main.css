@@ -83,11 +83,19 @@ hr {
 
 .dropdown__item {
     padding: 8px 20px;
+    display: flex;
+    align-items: center;
 }
 
 .dropdown__item:hover {
     background-color: #F2F2F2;
     cursor: pointer;
+}
+
+.dropdown__item__icon {
+    width: 24px;
+    height: fit-content;
+    margin-right: 20px;
 }
 
 .dropdown__item__title {

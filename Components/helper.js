@@ -40,7 +40,6 @@ const setInputStylesConfig = (
 ) => {
     if (RegExp("^/1+[A-Za-z0-9]").test(value)) {
         inputBuildElementState = true;
-
     if (DOMContentHasHeading) {
       headingPlaceholderStylesConfig.forEach((itemConfig) => {
         setInputConfig(inputElement, value, itemConfig);
@@ -56,7 +55,6 @@ const setInputStylesConfig = (
 //Creates text elements when hitting enter/return
 const createElements = (inputElement, DOMContentHasHeading, value, code, DOMContent, inputWrapper) => {
     if (code === "Enter" && value.length > 0 && inputBuildElementState) {
-      console.log(inputBuildElementState)
       if (DOMContentHasHeading) {
         DOMContent.insertBefore(getHeadingElement(value), inputWrapper);
         resetInputConfig(inputElement);

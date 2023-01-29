@@ -5,9 +5,12 @@ function createDropdownItems(data) {
     return `<div
                       class="dropdown__item"
                        is-selected="${isSelected || false}"
-                       <img src="">
-                      <div class="dropdown__item__content"><h6 class="dropdown__item__title">${title}</h6>
-                      <p class="dropdown__item__shortcut">Shortcut: ${shortcutText}</p></div>
+                       >
+                       <img class="dropdown__item__icon" src="../../assets/letter-t.png">
+                      <div class="dropdown__item__content">
+                        <h6 class="dropdown__item__title">${title}</h6>
+                        <p class="dropdown__item__shortcut">Shortcut: ${shortcutText}</p>
+                      </div>
                   </div>`;
   });
 }
@@ -33,4 +36,5 @@ function DropdownComponent(dropdownMockedData) {
 
   return dropdown;
 }
+
 export default DropdownComponent;
