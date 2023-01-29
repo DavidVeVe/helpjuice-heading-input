@@ -37,14 +37,22 @@ const getNormalTextElement = (value) => {
   return normalTextElement;
 };
 
-const inputKeyUpEvent = (inputElement, event) => {
-  const {
-    code,
-    target: { value }
-  } = event;
-  const DOMContentHasHeading = DOMContent.children.length === 1;
+//Creates text elements when hitting enter/return
+const createElements = (inputElement, DOMContentHasHeading, value, code) => {
+  if (code === "Enter" && value.length > 0 && inputBuildElementState) {
+    if (DOMContentHasHeading) {
+      DOMContent.insertBefore(getHeadingElement(value), inputElement);
+      resetInputConfig(inputElement);
+    } else {
+      DOMContent.insertBefore(getNormalTextElement(value), inputElement);
+      resetInputConfig(inputElement);
+    }
+    inputBuildElementState = false;
+  }
+};
 
-  //Sets input configurations
+//Sets input styles configurations
+const setInputStylesConfig = (inputElement, DOMContentHasHeading, value) => {
   if (RegExp("^/1").test(value)) {
     inputBuildElementState = true;
 
@@ -58,18 +66,17 @@ const inputKeyUpEvent = (inputElement, event) => {
       });
     }
   }
+};
 
-  //Creates text elements when hitting enter/return
-  if (code === "Enter" && value.length > 0 && inputBuildElementState) {
-    if (DOMContentHasHeading) {
-      DOMContent.insertBefore(getHeadingElement(value), inputElement);
-      resetInputConfig(inputElement);
-    } else {
-      DOMContent.insertBefore(getNormalTextElement(value), inputElement);
-      resetInputConfig(inputElement);
-    }
-    inputBuildElementState = false;
-  }
+const inputKeyUpEvent = (inputElement, event) => {
+  const {
+    code,
+    target: { value }
+  } = event;
+  const DOMContentHasHeading = DOMContent.children.length === 1;
+
+  setInputStylesConfig(inputElement, DOMContentHasHeading, value);
+  createElements(inputElement, DOMContentHasHeading, value, code);
 };
 
 const clearInput = (inputElement, { code, target: { value } }) => {
@@ -80,20 +87,18 @@ const clearInput = (inputElement, { code, target: { value } }) => {
   }
 };
 
-function inputComponent() {
+//Input component with events
+function inputComponent(placeHolder) {
   const inputElement = document.createElement("input");
-
-  inputElement.setAttribute("placeholder", inputInitialPlaceholder);
+  inputElement.setAttribute("placeholder", placeHolder);
 
   inputElement.addEventListener("keyup", (e) =>
     inputKeyUpEvent(inputElement, e)
   );
 
-  inputElement.addEventListener("keydown", (e) =>
-    clearInput(inputElement, e)
-  );
+  inputElement.addEventListener("keydown", (e) => clearInput(inputElement, e));
 
   return inputElement;
 }
 
-DOMContent.appendChild(inputComponent());
+DOMContent.appendChild(inputComponent(inputInitialPlaceholder));
