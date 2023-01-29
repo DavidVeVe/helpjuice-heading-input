@@ -28,6 +28,12 @@ body {
     background-color: #EBE6E6;
 }
 
+.dropdown__item:nth-of-type(1) {
+    background-color: #EBE6E6;
+
+}
+
+
 .display-none {
     display: none;
 }
