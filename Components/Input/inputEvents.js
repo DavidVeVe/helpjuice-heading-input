@@ -1,15 +1,39 @@
 import { setInputStylesConfig, createElements, clearInput } from "./helper.js";
 
+const toogleDropdown = (action, dropdownElement) => {
+  action === "remove"
+    ? dropdownElement.classList.remove("display-none")
+    : dropdownElement.classList.add("display-none");
+};
 
-const inputKeyUpEvent = (inputElement, event, DOMContent, inputWrapper) => {
+const inputKeyUpEvent = (
+  inputElement,
+  event,
+  DOMContent,
+  inputWrapper,
+  dropdownElement
+) => {
   const {
     code,
     target: { value }
   } = event;
   const DOMContentHasHeading = DOMContent.children.length === 1;
 
+  if (value === "/" && DOMContent.children.length === 1 ) {
+    toogleDropdown("remove", dropdownElement);
+  } else {
+    toogleDropdown("add", dropdownElement);
+  }
+
   setInputStylesConfig(inputElement, DOMContentHasHeading, value);
-  createElements(inputElement, DOMContentHasHeading, value, code, DOMContent, inputWrapper);
+  createElements(
+    inputElement,
+    DOMContentHasHeading,
+    value,
+    code,
+    DOMContent,
+    inputWrapper
+  );
 };
 
 export { inputKeyUpEvent, clearInput };

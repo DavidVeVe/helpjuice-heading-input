@@ -17,7 +17,7 @@ function createDropdownElements(data) {
 function DropdownComponent(DOMContent) {
   const dropdown = document.createElement("div");
   dropdown.setAttribute("class", "dropdown");
-  dropdown.classList.add("display");
+  dropdown.classList.add("display-none");
   dropdown.innerHTML = createDropdownElements(dropdownMockedData).join("");
 
 

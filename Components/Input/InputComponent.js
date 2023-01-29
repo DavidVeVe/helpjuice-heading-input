@@ -5,15 +5,16 @@ import DropdownComponent from "../Dropdown/DropdownComponent.js";
 function InputComponent(placeHolder, DOMContent) {
   const inputWrapper = document.createElement('div')
   const inputElement = document.createElement("input");
+  const dropdownElement = DropdownComponent(DOMContent)
   
   inputWrapper.appendChild(inputElement)
-  inputWrapper.appendChild(DropdownComponent(DOMContent))
+  inputWrapper.appendChild(dropdownElement)
   inputWrapper.setAttribute('class','input-wrapper')
   inputElement.setAttribute('class','input-wrapper__input')
   inputElement.setAttribute("placeholder", placeHolder);
 
   inputElement.addEventListener("keyup", (e) =>
-    inputKeyUpEvent(inputElement, e, DOMContent, inputWrapper)
+    inputKeyUpEvent(inputElement, e, DOMContent, inputWrapper, dropdownElement)
   );
 
   inputElement.addEventListener("keydown", (e) => clearInput(inputElement, e));
